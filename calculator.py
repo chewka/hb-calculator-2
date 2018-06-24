@@ -18,22 +18,17 @@ while True:
 
 #the 0'th word in the token is the operator
 	operator = token[0]
+	if operator == "q":
+		break
+		pass	
+
+	if len(token) == 2:
+		print("Please enter in a valid input")
+		continue
+
 	num1 = int(token[1])
 	num2 = int(token[2])
 
-	if len(token) == 4:
-		num3 = int(token[3])
-		if operator == "x+":
-			print(add_mult(num1, num2, num3))
-
-	if len(token) > 4:
-		#print(error_message)
-		pass
-
-
-		if operator == "q":
-			pass	
-			#quit
 
 	if len(token) <=3:
 		if operator == "+":
@@ -55,9 +50,14 @@ while True:
 		if operator == "cube+":
 			print(add_cubes(num1, num2))
 
+	if len(token) == 4:
+		num3 = int(token[3])
+		if operator == "x+":
+			print(add_mult(num1, num2, num3))
 
-
-
+	if len(token) > 4:
+		print("Please enter in a valid input")
+		
 
 
 

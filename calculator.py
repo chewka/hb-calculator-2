@@ -12,9 +12,24 @@ from arithmetic import *
 # take input and split it into a list (tokenize)
 print("Welcome to the calculator!")
 
+
+operation_file = open("operations.txt", "r")
+result_file = open("results.txt", "w")
+
 while True:
 
-	user_input = input("Please enter a command followed by the appropriate arguments \n >>> ")
+	user_input = operation_file.readline().rstrip()
+	print(user_input)
+
+	"""	lines = [0, 5]
+		i = 0
+		for line in operation_file:
+			print (line)
+			print(user_input)
+			i+=1
+	"""
+	if user_input == "STOP HERE":
+		break
 
 	token = user_input.split(" ")
 
@@ -29,11 +44,11 @@ while True:
 
 
 	if len(token) < 3:
-		print(error_message)
+		result = error_message
 		continue
 
 	if len(token) > 4:
-		print(error_message)
+		result = error_message
 		continue
 
 	num1 = int(token[1])
@@ -69,11 +84,11 @@ while True:
 			result = error_message
 
 
-		
-	print(" >>> {}".format(result))
+	result_file.write(" >>> {} \n".format(result))	
 
 
-
+operation_file.close()
+result_file.close()
 # the operator determines which command(function) to use
 
 #most functions have 2 arguments, but some have 3
